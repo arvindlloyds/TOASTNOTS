@@ -1,0 +1,98 @@
+﻿<Window x:Class="ConfigurationExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:utilities="clr-namespace:ConfigurationExample.Utilities"
+        Title="MainWindow" Height="700" Width="1024">
+    <Grid>
+        <Grid.Resources>
+            <utilities:EnumBooleanConverter x:Key="EnumBooleanConverter" />
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        
+        <Grid ShowGridLines="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Rectangle x:Name="TrackingElement" Fill="{x:Null}" Stroke="Red" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="500" Width="500"  />
+        </Grid>
+
+        <Grid Grid.Row="1" HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Notification text:" VerticalAlignment="Center" Margin="5" FontWeight="Bold" />
+            <TextBox Grid.Column="1" x:Name="SampleTextInput" Text="Notification" Margin="5"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="20" />
+        </Grid>
+        
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal"  VerticalAlignment="Center">
+                <TextBlock Text="Position provider:" VerticalAlignment="Center" Margin="5" FontWeight="Bold" />
+                <RadioButton VerticalAlignment="Center" IsChecked="{Binding Path=PositionProviderType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Window}">Window</RadioButton>
+                <RadioButton VerticalAlignment="Center" IsChecked="{Binding Path=PositionProviderType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Screen}" Margin="10 0">Main screen</RadioButton>
+                <RadioButton VerticalAlignment="Center" IsChecked="{Binding Path=PositionProviderType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Control}">Control</RadioButton>
+            </StackPanel>
+            <DockPanel Grid.Column="1" Grid.ColumnSpan="2" >
+                <TextBlock Text="Corner:" VerticalAlignment="Center" Margin="5" FontWeight="Bold" />
+                <RadioButton VerticalAlignment="Center" IsChecked="{Binding Path=Corner, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=TopLeft}">TopLeft</RadioButton>
+                <RadioButton VerticalAlignment="Center" IsChecked="{Binding Path=Corner, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=BottomLeft}" Margin="20 0">BottomLeft</RadioButton>
+                <RadioButton VerticalAlignment="Center" IsChecked="{Binding Path=Corner, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=TopRight}">TopRight</RadioButton>
+                <RadioButton VerticalAlignment="Center" IsChecked="{Binding Path=Corner, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=BottomRight}" Margin="20 0">BottomRight</RadioButton>
+                <RadioButton VerticalAlignment="Center" IsChecked="{Binding Path=Corner, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=BottomCenter}">BottomCenter</RadioButton>
+            </DockPanel>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal"  VerticalAlignment="Center" >
+                <TextBlock Text="Lifetime:" VerticalAlignment="Center" Margin="5" FontWeight="Bold" />
+                <RadioButton VerticalAlignment="Center" IsChecked="{Binding Path=Lifetime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Basic}">Basic</RadioButton>
+                <RadioButton VerticalAlignment="Center" IsChecked="{Binding Path=Lifetime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=TimeBased}">Time based</RadioButton>
+            </StackPanel>
+            <StackPanel Grid.Column="2" Orientation="Horizontal"  VerticalAlignment="Center" >
+                <TextBlock Text="Configuration:" VerticalAlignment="Center" Margin="5" FontWeight="Bold" />
+                <CheckBox IsChecked="{Binding ShowCloseButton, Mode=TwoWay}" VerticalAlignment="Center">ShowCloseButton</CheckBox>
+                <CheckBox IsChecked="{Binding FreezeOnMouseEnter, Mode=TwoWay}" VerticalAlignment="Center" Margin="20 0 0 0">FreezeOnMouseEnter</CheckBox>
+                <CheckBox IsChecked="{Binding UnFreezeOnMouseEnter, Mode=TwoWay}" VerticalAlignment="Center" Margin="20 0 0 0">UnfreezeOnMouseEnter</CheckBox>
+            </StackPanel>
+        </Grid>
+
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Notification type:" VerticalAlignment="Center" Margin="5" FontWeight="Bold" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Column="1" >
+                <Button Content="Information" Margin="5" Width="100" Click="Button_ShowInformationClick" />
+                <Button Content="Success" Margin="5" Width="100" Click="Button_ShowSuccessClick" />
+                <Button Content="Warning" Margin="5" Width="100" Click="Button_ShowWarningClick" />
+                <Button Content="Error" Margin="5" Width="100" Click="Button_ShowErrorClick" />
+                <Button Content="Customized" Margin="5" Width="100" Click="Button_ShowCustomizedMessageClick" />
+            </StackPanel>
+        </Grid>
+   
+    </Grid>
+</Window>

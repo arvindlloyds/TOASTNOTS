@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <description>
+        ToastNotifications allows you to create and display rich notifications in WPF applications.
+        It's highly configurable with set of built-in options like positions, behaviours, themes and many others.
+        It's extendable, it gives you possibility to create custom and interactive notifications in simply manner.
+    </description>
+    <summary>Toast notifications for WPF</summary>
+    <releaseNotes>
+      Upgrading from v1 ?
+
+      ToastNotifications v2 is completely new implementation and it's not compatibile with version 1.
+      Please follow migration instructions to upgrade to the new version.
+      https://github.com/raflop/ToastNotifications/blob/master-v2/Docs/Migration.md
+    </releaseNotes>
+    <language>en-US</language>
+    <licenseUrl>https://github.com/raflop/ToastNotifications/blob/master-v2/license</licenseUrl>
+    <projectUrl>https://github.com/raflop/ToastNotifications</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/raflop/ToastNotifications/master-v2/Media/project-icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <copyright>Copyright © Rafał Łopatka 2018</copyright>
+    <references></references>
+    <tags>WPF notifications, Toast notifications, XAML notifications, c# notifications, UI notifications, ToastNotifications, toasts, messages, notifications, WPF, XAML, UI, notify, message, toast</tags>
+  </metadata>
+    <files>
+      <file src="readme.txt" target="" />
+   </files>
+</package>

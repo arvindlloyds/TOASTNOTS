@@ -1,0 +1,39 @@
+﻿<Window x:Class="BasicUsageExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="700" Width="1024">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <DockPanel HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center">
+            <TextBlock Text="MessageText configuration: " FontWeight="SemiBold" Margin="5 0"/>
+            <CheckBox Name="CbFreezeOnMouseEnter" Content="FreezeOnMouseEnter" IsChecked="True" Margin="5 2"/>
+            <CheckBox Name="CbUnfreezeOnMouseLeave" Content="UnfreezeOnMouseLeave" IsChecked="False" Margin="5 2"/>
+
+            <CheckBox Name="CbShowCloseButton" Content="ShowCloseButton" IsChecked="False" Margin="5 2"/>
+            <TextBlock Text="Notifications are queued" HorizontalAlignment="Right" Margin="20 2 0 0" />
+
+        </DockPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2">
+            <Button Content="Information" Margin="5" Width="100" Click="Button_ShowInformationClick" />
+            <Button Content="Success" Margin="5" Width="100" Click="Button_ShowSuccessClick" />
+            <Button Content="Warning" Margin="5" Width="100" Click="Button_ShowWarningClick" />
+            <Button Content="Error" Margin="5" Width="100" Click="Button_ShowErrorClick" />
+            <Button Margin="5" Width="100" Click="Button_SameContentClick" >
+                <Button.Content>
+                    <StackPanel>
+                        <TextBlock Text="Same content" VerticalAlignment="Center"/>
+                        <TextBlock Text="(click more times)" VerticalAlignment="Center" FontSize="10"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button Content="Clear" Margin="5" Width="100" Click="Button_ClearClick" />
+            <Button Content="Clear Last" Margin="5" Width="100" Click="Button_ClearLastClick" Name="BClearLast" IsEnabled="False" />
+
+        </StackPanel>
+    </Grid>
+</Window>
